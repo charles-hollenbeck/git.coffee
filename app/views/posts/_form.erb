@@ -1,0 +1,17 @@
+<%= form_for :post, url: posts_path do |posts_form| %>
+	<%= posts_form.label :name %><br/>
+	<%= posts_form.text_field :name %><br/>
+	<%= posts_form.label :content %><br/>
+	<%= posts_form.text_area :content, rows: 15 %><br />
+
+	<%= posts_form.fields_for :seo_data_attributes, @post.seo_data do |seo_data_fields| %>
+		<%= seo_data_fields.label :meta_title %><br/>
+		<%= seo_data_fields.text_field :meta_title %><br/>
+		<%= seo_data_fields.label :meta_description %><br/>
+		<%= seo_data_fields.text_area :meta_description, rows: 3 %><br/>
+		<%= seo_data_fields.label :meta_robots %><br/>
+		<%= seo_data_fields.text_field :meta_robots %><br/>
+	<% end %>
+
+	<%= posts_form.submit %>
+<% end %>

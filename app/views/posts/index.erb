@@ -1,0 +1,12 @@
+<% if @posts.length > 0 %>
+	<% @posts.each do |post| %>
+		<div class="post-listing">
+			<%= link_to post do %>
+				<p class="post-name"><%= post.name %></p>
+				<p class="post-date">Posted <%= time_ago_in_words post.created_at %> ago</p>
+			<% end %>
+		</div>
+	<% end %>
+<% else %>
+	<p>No Posts to Show</p>
+<% end %>

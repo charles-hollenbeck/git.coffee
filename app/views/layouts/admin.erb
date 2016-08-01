@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= @seo_meta_title %> | Charles Hollenbeck</title>
+    <meta charset="UTF-8" />
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<header>
+  		<p>Admin Panel</p>
+  	</header>
+    <%= yield %>
+  </body>
+</html>

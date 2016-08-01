@@ -1,0 +1,257 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "normalize";
+@import "fonts";
+@import "syntax_github";
+
+$background: #efeae5;
+$header: #323232;
+$main-bg: #F0F0F0;
+$nav_bar: #f1c40f;
+$footer: #2c3e50;
+
+@mixin box-shadow($x, $y, $blur, $spread, $inset: false, $color: #333333) {
+	@if($inset){
+		-webkit-box-shadow: inset $x $y $spread $color;
+		-moz-box-shadow:    inset $x $y $spread $color;
+		box-shadow:         inset $x $y $spread $color;
+	} @else {
+		-webkit-box-shadow: $x $y $spread $color;
+		-moz-box-shadow:    $x $y $spread $color;
+		box-shadow:         $x $y $spread $color;
+	}
+}
+html, body {
+	height: 100%;
+}
+body {
+ 	margin: 0 auto;
+	font-family: "Source Sans Pro", Tahoma, Geneva, sans-serif;
+	background-color: $background;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	background-color: $header;
+	height: 100px;
+	width: 100%;
+	@include box-shadow(0,1px, 0,10px);
+	position: relative;
+	z-index: 2;
+
+	p {
+		@extend h1;
+		font-weight: 300;
+		font-size: 40pt;
+		padding: 30px 0 0 10px;
+		margin: 0 auto;
+
+		a, a:hover {
+			text-decoration: none;
+			color: #FFFFFF;
+		}
+	}
+}
+
+nav {
+	width: 100%;
+	background-color: $nav_bar;
+    font-weight: 200;
+	font-size: 20pt;
+	position: relative;
+	z-index: 1;
+
+	ul {
+		margin: 0 auto;
+		list-style-type: none;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			float: left;
+
+			a {
+				border-right: 1px ridge darken($nav_bar, 10%);
+				display: block;
+				padding: 10px 15px;
+				text-decoration: none;
+				color: darken($nav_bar, 18%);
+				-webkit-transition: color 0.5s ease;
+				-moz-transition: color 0.5s ease;
+				transition: color 0.5s ease;
+
+				&:hover {
+					color: darken($nav_bar, 30%);
+					//@include box-shadow(0px, 0px, 20px, true);
+				}
+			}
+
+		}
+		&:after {
+			content: " ";
+			display: block;
+			clear: both;
+		}
+	}
+}
+
+#wrapper {
+	background-color: $background;
+	@include box-shadow(0,1px, 0,10px);
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: row;
+	flex: 1 0 auto;
+
+	main, aside {
+		display: inline-block;
+		box-sizing: border-box;
+		//flex: 1 0 auto;
+	}
+
+	main {
+		float: left;
+		background-color: $main-bg;
+		flex-grow: 2;
+		display: flex;
+		flex-direction: column;
+		padding: 20px 0;
+
+		div.header {
+			margin-right: 20px;
+			margin-bottom: 20px;
+			@include box-shadow(0, 0, 10px, 20px, false, darken($main-bg, 40%));
+
+			h1 {
+				margin: 0 auto;
+				font-weight: 400;
+				background-color: $header;
+				color: #FFFFFF;
+				padding: 5px 0 5px 20px;
+			}
+		}
+
+		div#content {
+			padding: 0 20px;
+		}
+
+		div.post-listing {
+			margin-bottom: 10px;
+
+			a {
+				padding: 5px 10px;
+				display: block;
+				background-color: $background;
+				border: 1px ridge darken($background, 10%);
+				color: #000;
+				text-decoration: none;
+
+				-webkit-transition: box-shadow 0.5s ease;
+				-moz-transition: box-shadow 0.5s ease;
+				transition: box-shadow 0.5s ease;
+
+				&:hover {
+					background-color: darken($main-bg, 5%);
+					@include box-shadow(0, 0, 10px, 10px, true, darken($background, 20%));
+				}
+
+				p {
+					margin: 0 auto;
+				}
+
+				p.post-name {
+					font-size: 20pt;
+				}
+
+				p.post-date {
+					font-weight: 200;
+					color: darken($background, 30%);
+				}
+			}
+		}
+	}
+
+	aside {
+		flex-shrink: 1;
+		background-color: $background;
+		width: 400px;
+		border-left: 1px ridge darken($background, 10%);
+		padding: 20px;
+
+		p.heading {
+			margin: 0 auto 10px auto;
+			font-weight: 400;
+			font-size: 16pt;
+		}
+
+		div.github {
+			div.repo {
+				margin-bottom: 5px;
+
+				p {
+					margin: 0 auto;
+					width: 100%;
+				}
+
+				a {
+					padding: 5px 10px;
+					display: block;
+					background-color: $main-bg;
+					border: 1px ridge darken($background, 10%);
+					color: #000;
+
+					-webkit-transition: box-shadow 0.5s ease;
+					-moz-transition: box-shadow 0.5s ease;
+					transition: box-shadow 0.5s ease;
+					text-decoration: none;
+
+					&:hover {
+						background-color: darken($main-bg, 5%);
+						@include box-shadow(0, 0, 10px, 10px, true, darken($background, 20%));
+					}
+				}
+
+				p.repo-name {
+					font-size: 14pt;
+				}
+
+				p.repo-last-pushed {
+					font-size: 10pt;
+					color: darken($main-bg, 25%);
+				}
+
+				&:last-child {
+					margi-bottom: 0px;
+				}
+			}
+		}
+	}
+
+	&:after {
+		content: " ";
+		display: block;
+		clear: both;
+	}
+}
+
+footer {
+	background-color: $footer;
+	padding: 10px;
+	color: #bdc3c7;
+	position: relative;
+	z-index: 1
+}

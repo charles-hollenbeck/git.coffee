@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title><%= @seo_meta_title %> | Charles Hollenbeck</title>
+		<meta name="description" content="<%= @seo_meta_description %>" />
+		<meta name="robots" content="<%= @seo_meta_robots %>" />
+		<meta charset="UTF-8" />
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><%= link_to "Home", :root %></li>
+				<li><%= link_to "Blog", :posts %></li>
+			</ul>
+		</nav>
+		<div id="wrapper">
+			<main>
+				<div class="header">
+					<h1><%= @seo_h1 %></h1>
+				</div>
+				<div id="content">
+					<%= yield %>
+				</div>
+			</main>
+			<aside>
+				<p class="heading">Latest Github Updates</p>
+				<div class="github">
+					<% recent_github_updates.each do |repo| %>
+					<div class="repo">
+						<%= link_to repo[:html_url] do %>
+						<p class="repo-name"><%= repo[:name] %></p>
+						<p class="repo-last-pushed">Updated <%= time_ago_in_words (repo[:pushed_at]) %> ago</p>
+						<% end %>
+					</div>
+					<% end %>
+				</div>
+			</aside>
+		</div>
+		<footer>
+			&copy; <%= Time.now.year %> Charles Hollenbeck
+		</footer>
+	</body>
+</html>
