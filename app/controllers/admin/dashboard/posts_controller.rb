@@ -13,12 +13,12 @@ class Admin::Dashboard::PostsController < AdminController
    # GET /admin/dashboard/posts/new
   def new
     @post = Post.new
-    set_h1 "Create a New Post"
+    #set_h1 "Create a New Post"
   end
 
   # GET /admin/dashboard/posts/1/edit
   def edit
-    set_h1 "Edit a Post"
+    #set_h1 "Edit a Post"
   end
 
   # POST /admin/dashboard/posts

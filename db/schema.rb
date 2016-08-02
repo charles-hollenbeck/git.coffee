@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801230748) do
+ActiveRecord::Schema.define(version: 20160802171155) do
 
   create_table "admin_dashboard_posts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160801230748) do
     t.integer  "page_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "seo_h1"
     t.index ["page_type", "page_id"], name: "index_seo_data_on_page_type_and_page_id"
   end
 
