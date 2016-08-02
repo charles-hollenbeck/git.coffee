@@ -9,12 +9,6 @@ class ApplicationController < ActionController::Base
 		super
 	end
 
-	def index
-		@seo_meta_title = "Web Developer"
-		@seo_meta_description = "A website presented by Charles Hollenbeck which provides information regarding web development."
-		@seo_h1 = "Charles Hollenbeck - Web Developer"
-	end
-
 	def set_title(new_title)
 		@seo_meta_title = new_title
   	end

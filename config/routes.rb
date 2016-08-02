@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'dashboard/index'
-  end
-
-	resources :settings
-	resources :posts
-
-	root "application#index"
+	root "posts#index"
+	resources :posts, only: ["index", "show"]
 
 	namespace :admin do
-		get "", to: "dashboard#index", as: "/"
+		root "dashboard#index"
+
+		namespace :dashboard do
+			resources :posts, except: ["show"]
+			resources :settings
+
+			root "posts#index"
+		end
 	end
 end
