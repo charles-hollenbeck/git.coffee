@@ -11,3 +11,12 @@
 	- [ ] Add Post Management in Dashboard
 	- [ ] Add Settings Management in Dashboard
 - [ ] Create a comments system for the form
+
+# Install Instructions:
+
+1. Install ruby
+2. Ensure NodeJS in installed on the system
+3. ```gem install rails -N```
+4. ```bundle install``
+5. ```rake db:setup```
+6. ```rake db:seed```
