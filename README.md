@@ -17,6 +17,6 @@
 1. Install ruby
 2. Ensure NodeJS in installed on the system
 3. ```gem install rails -N```
-4. ```bundle install``
+4. ```bundle install```
 5. ```rake db:setup```
 6. ```rake db:seed```
