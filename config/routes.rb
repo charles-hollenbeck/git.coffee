@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	post "/create/user" => "user#create"
 
 	namespace :admin do
-		root "dashboard#index"
+		root "dashboard#index", :as => :dashboard
 
 		namespace :dashboard do
 			resources :posts, except: ["show"]
