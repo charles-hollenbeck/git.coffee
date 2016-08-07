@@ -1,0 +1,17 @@
+<%= render partial: "list_users" %>
+
+<div class="content-wrapper">
+	<header>
+		<h1>Viewing User: <%= @user.name %></h1>
+		<ul class="action-buttons">
+			<li><%= link_to "Edit",  edit_admin_user_url(@user), class: "edit-button" %></li>
+			<li><%= link_to "Delete",  admin_user_url(@user), :method => :delete, class: "destroy-button", data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+	</header>
+
+	<div class="content">
+		<ul>
+			<li><strong>E-mail:</strong> <%= @user.email %></li>
+		</ul>
+	</div>
+</div>

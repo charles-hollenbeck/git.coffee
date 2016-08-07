@@ -1,22 +1,20 @@
 Rails.application.routes.draw do
 	root "posts#index"
-	resources :posts, only: ["index", "show"]
 
-	get "/login" => "sessions#new"
-	post "/login" => "session#create"
-	get "/logout" => "session#destroy"
-
-	get "/register" => "user#new"
-	post "/create/user" => "user#create"
+	get "/posts" => "posts#index", as: "posts"
+	get "/post/:id" => "posts#show", as: "post"
 
 	namespace :admin do
-		root "dashboard#index", :as => :dashboard
+		resources :posts, path_names: { show: "preview" }
+		resources :settings, only: [:edit, :update, :index]
+		resources :users
 
-		namespace :dashboard do
-			resources :posts, except: ["show"]
-			resources :settings
+		get "/" => :index
 
-			root "posts#index"
+		scope :controller => :sessions do
+			get "login" => :new
+			post "login" => :create
+			get "logout" => :destroy
 		end
 	end
 end

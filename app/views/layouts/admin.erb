@@ -11,12 +11,22 @@
 		<div id="wrapper">
 			<nav>
 				<ul>
-					<li><%= link_to "Dashboard", admin_dashboard_path, class: "pure-menu-link" %></li>
+					<li><%= link_to "Dashboard", admin_path, class: "pure-menu-link" %></li>
 					<li>
-						<%= link_to "Posts", admin_dashboard_posts_path, class: "pure-menu-link " %>
+						<%= link_to "Posts", admin_posts_path, class: "pure-menu-link " %>
 						<ul>
-							<li><%= link_to "View All", admin_dashboard_posts_path, class: "pure-menu-link" %></li>
-							<li><%= link_to "New", new_admin_dashboard_post_path, class: "pure-menu-link" %></li>
+							<li><%= link_to "View All", admin_posts_path, class: "pure-menu-link" %></li>
+							<li><%= link_to "New", new_admin_post_path, class: "pure-menu-link" %></li>
+						</ul>
+					</li>
+					<li>
+						<%= link_to "Settings", admin_settings_path, class: "pure-menu-link " %>
+					</li>
+					<li>
+						<%= link_to "Users", admin_users_path, class: "pure-menu-link " %>
+						<ul>
+							<li><%= link_to "View All", admin_users_path, class: "pure-menu-link" %></li>
+							<li><%= link_to "New", new_admin_user_path, class: "pure-menu-link" %></li>
 						</ul>
 					</li>
 				</ul>

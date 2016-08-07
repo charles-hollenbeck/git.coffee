@@ -1,0 +1,15 @@
+<ul class="item-list">
+	<% @users.each do |user| %>
+		<li class="item">
+			<%= link_to admin_user_url(user) do %>
+				<div class="item-header"><!-- Add Role Here Later
+					<p class="item-header-subtitle">Charles Hollenbeck</p> -->
+					<p class="item-header-title"><%= user.name %></p>
+				</div>
+				<div class="item-content">
+					Created <%= time_ago_in_words(user.created_at) %> ago
+				</div>
+			<% end %>
+		</li>
+	<% end %>
+</ul>

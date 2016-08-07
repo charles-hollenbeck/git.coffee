@@ -1,9 +1,9 @@
-class Admin::Dashboard::PostsController < AdminController
-  before_action :set_post, only: [:edit, :update, :destroy]
+class Admin::PostsController < AdminController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_posts, only: [:show, :index, :edit]
 
   # GET /admin/dashboard/posts
   def index
-    @posts = Post.all
   end
 
   # GET /admin/dashboard/posts/1
@@ -27,7 +27,7 @@ class Admin::Dashboard::PostsController < AdminController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to admin_post_url(@post), notice: 'Post was successfully created.' }
       else
         format.html { render :new }
       end
@@ -38,7 +38,7 @@ class Admin::Dashboard::PostsController < AdminController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to admin_post_url(@post), notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -49,7 +49,7 @@ class Admin::Dashboard::PostsController < AdminController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to admin_posts_url, notice: 'Post was successfully destroyed.' }
     end
   end
 
@@ -59,8 +59,12 @@ class Admin::Dashboard::PostsController < AdminController
       @post = Post.find(params[:id])
     end
 
+    def get_posts
+      @posts = Post.all.order(:created_at => :desc)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, :content, seo_data_attributes: [:meta_title, :meta_description, :meta_robots])
+      params.require(:post).permit(:name, :content, seo_data_attributes: [:meta_title, :meta_description, :meta_robots, :seo_h1])
     end
 end

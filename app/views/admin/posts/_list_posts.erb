@@ -1,7 +1,7 @@
-<% if @posts.length > 0 %>
-	<ul class="item-list">
-		<% @posts.each do |post| %>
-			<li class="item">
+<ul class="item-list">
+	<% @posts.each do |post| %>
+		<li class="item">
+			<%= link_to admin_post_url(post) do %>
 				<div class="item-header">
 					<p class="item-header-subtitle">Charles Hollenbeck</p>
 					<p class="item-header-title"><%= post.name %></p>
@@ -9,9 +9,7 @@
 				<div class="item-content">
 					Created <%= time_ago_in_words(post.created_at) %> ago
 				</div>
-			</li>
-		<% end %>
-	</ul>
-<% else %>
-	<p>No Posts to Show</p>
-<% end %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>

@@ -1,4 +1,4 @@
-<%= form_for :user, url: "/create/user" do |f| %>
+<%= form_for @user, url: admin_user_path do |f| %>
 	<%= f.label :name %><br />
 	<%= f.text_field :name %> <br/>
 	<%= f.label :email %><br />

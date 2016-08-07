@@ -1,0 +1,17 @@
+<%= render partial: "list_posts" %>
+
+<div class="content-wrapper">
+	<header>
+		<h1><%= @post.name %></h1>
+		<ul class="action-buttons">
+			<li><%= link_to "Edit",  edit_admin_post_url(@post), class: "edit-button" %></li>
+			<li><%= link_to "Delete",  admin_post_url(@post), :method => :delete, class: "destroy-button", data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+	</header>
+	<div class="content">
+		<% if @post.seo_data.seo_h1 %>
+			<h1><%= @post.seo_data.seo_h1 %></h1>
+		<% end %>
+		<%= markdown(@post.content) %>
+	</div>
+</div>

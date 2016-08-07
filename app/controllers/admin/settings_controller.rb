@@ -1,15 +1,11 @@
-class SettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update]
+class Admin::SettingsController < AdminController
+  layout "admin_login"
+  before_action :set_setting, only: [:edit, :update]
 
   # GET /settings
   # GET /settings.json
   def index
     @settings = Setting.all
-  end
-
-  # GET /settings/1
-  # GET /settings/1.json
-  def show
   end
 
   # GET /settings/1/edit
@@ -21,11 +17,9 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update(setting_params)
-        format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @setting }
+        format.html { redirect_to admin_settings_path, notice: 'Setting was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,6 +32,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:name, :value)
+      params.require(:setting).permit(:value)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_for :post, url: admin_dashboard_posts_path do |posts_form| %>
+<%= form_for @post, url: admin_posts_path do |posts_form| %>
 	<%= posts_form.label :name %><br/>
 	<%= posts_form.text_field :name %><br/>
 	<%= posts_form.label :content %><br/>
